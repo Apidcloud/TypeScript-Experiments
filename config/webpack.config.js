@@ -14,7 +14,7 @@ module.exports = {
         path: path.resolve('dist'),
         // export itself to a global var
         libraryTarget: "var",
-        // name of the global var: "Foo"
+        // name of the global var
         library: "SC"
     },
     resolve: {
@@ -26,7 +26,10 @@ module.exports = {
     module: {
         loaders: [
             // .ts(x) files should first pass through the Typescript loader, and then through babel
-            { test: /\.tsx?$/, loaders: ['babel-loader', 'ts-loader'] }
+            {
+                test: /\.tsx?$/,
+                loaders: ['babel-loader', 'ts-loader']
+            }
         ]
     },
     plugins: [
