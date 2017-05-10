@@ -11,6 +11,22 @@ export class Animal {
 
 export class Snake extends Animal {
     move() {
+
+        const dress = () => {
+            console.log("Dressing....");
+        };
+
+        function sleep(ms = 0) {
+            return new Promise(r => setTimeout(r, ms));
+        }
+
+        (async () => {
+            console.log('before sleeping');
+            await sleep(1000);
+            console.log('after sleeping');
+        })();
+
+        dress();
         console.log("Slithering...");
         super.move(5);
     }
