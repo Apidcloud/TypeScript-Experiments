@@ -11,7 +11,11 @@ module.exports = {
     // Output the bundled JS to dist/app.js
     output: {
         filename: 'app.js',
-        path: path.resolve('dist')
+        path: path.resolve('dist'),
+        // export itself to a global var
+        libraryTarget: "var",
+        // name of the global var: "Foo"
+        library: "SC"
     },
     resolve: {
         // Look for modules in .ts(x) files first, then .js(x)
