@@ -8,7 +8,7 @@ let finalPackageName = packageName + '.js';
 // default loaders when transpiling to ES5 (for running on every browser)
 let loadersSetup = ['babel-loader', 'ts-loader'];
 
-let outputPath = path.resolve('builds/build-es5');
+let outputPath = path.resolve('build/build-es5');
 
 // transpiling to ES6? (for editor and for some browsers)
 const toES6 = process.env.NODE_ENV === 'es6';
@@ -19,13 +19,13 @@ const deploying = process.env.NODE_ENV === 'production';
 if (toES6) {
     // remove babel loader that would otherwise transpile to ES5
     loadersSetup.shift();
-    outputPath = path.resolve('builds/build-es6');
+    outputPath = path.resolve('build/build-es6');
 
 }
 
 if (deploying) {
     finalPackageName = packageName + '.min.js';
-    outputPath = path.resolve('builds/dist');
+    outputPath = path.resolve('build/dist');
 }
 
 
