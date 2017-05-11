@@ -3,12 +3,15 @@
   "scripts": {
     "build": "webpack -d --config config/webpack.config.js",
     "editor-build": "cross-env NODE_ENV=es6 npm run build",
-    "deploy": "cross-env NODE_ENV=production webpack -p --config config/webpack.config.js"
+    "deploy": "cross-env NODE_ENV=production webpack -p --config config/webpack.config.js",
+    "live-server": "webpack-dev-server -d --port 8080 --progress --colors --hot --config config/webpack.config.js",
+    "watch": "webpack -d --config config/webpack.config.js --watch"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
     "babel-plugin-transform-runtime": "^6.23.0",
-    "cross-env": "^4.0.0"
+    "cross-env": "^4.0.0",
+    "webpack-dev-server": "^2.4.5"
   },
   "dependencies": {
     "babel-runtime": "^6.23.0"

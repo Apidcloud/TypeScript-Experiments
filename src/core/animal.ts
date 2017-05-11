@@ -7,6 +7,6 @@ export default class Animal {
     }
 
     move(meters) {
-        console.log(this.name + " moved " + meters + "m.");
+        console.log(this.name + " teste " + meters + "m.");
     }
 }

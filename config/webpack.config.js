@@ -41,7 +41,8 @@ let config = {
         // export itself to a global var
         libraryTarget: "var",
         // name of the global var
-        library: "SC"
+        library: "SC",
+        publicPath: "/build/build-es5/"
     },
     resolve: {
         // Look for modules in .ts(x) files first, then .js(x)
