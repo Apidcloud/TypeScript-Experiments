@@ -1,19 +1,43 @@
-var webpack = require('webpack');
-var path = require('path');
-var WebpackNotifierPlugin = require('webpack-notifier');
+const webpack = require('webpack');
+const path = require('path');
+const WebpackNotifierPlugin = require('webpack-notifier');
+const packageName = require('../package.json').name;
 
-module.exports = {
-    // for development use eval-source-map
-    // for production use source-map
-    devtool: 'eval-source-map',
+let finalPackageName = packageName + '.js';
+
+// default loaders when transpiling to ES5 (for running on every browser)
+let loadersSetup = ['babel-loader', 'ts-loader'];
+
+let outputPath = path.resolve('builds/build-es5');
+
+// transpiling to ES6? (for editor and for some browsers)
+const toES6 = process.env.NODE_ENV === 'es6';
+
+// deploying? (for complete games)
+const deploying = process.env.NODE_ENV === 'production';
+
+if (toES6) {
+    // remove babel loader that would otherwise transpile to ES5
+    loadersSetup.shift();
+    outputPath = path.resolve('builds/build-es6');
+
+}
+
+if (deploying) {
+    finalPackageName = packageName + '.min.js';
+    outputPath = path.resolve('builds/dist');
+}
+
+
+let config = {
     // Library (or app) entry point (webpack will look for it in the 'src' directory due to the modules setting below).
     entry: [
         'index.js'
     ],
     // Output the bundled JS to dist/app.js
     output: {
-        filename: 'app.js',
-        path: path.resolve('dist'),
+        filename: finalPackageName,
+        path: outputPath,
         // export itself to a global var
         libraryTarget: "var",
         // name of the global var
@@ -22,7 +46,7 @@ module.exports = {
     resolve: {
         // Look for modules in .ts(x) files first, then .js(x)
         extensions: ['.ts', '.tsx', '.js', '.jsx'],
-        // Add 'src' to our modulesDirectories, as all our app code will live in there, so Webpack should look in there for modules
+        // Add 'src' to our modules, as all our app code will live in there, so Webpack should look in there for modules
         modules: ['src', 'node_modules']
     },
     module: {
@@ -30,12 +54,14 @@ module.exports = {
             // .ts(x) files should first pass through the Typescript loader, and then through babel
             {
                 test: /\.tsx?$/,
-                loaders: ['babel-loader', 'ts-loader']
+                loaders: loadersSetup
             }
         ]
     },
     plugins: [
         // Set up the notifier plugin - you can remove this (or set alwaysNotify false) if desired
-        new WebpackNotifierPlugin({ alwaysNotify: true })
+        new WebpackNotifierPlugin({alwaysNotify: true})
     ]
 };
+
+module.exports = config;
