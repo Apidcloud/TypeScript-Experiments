@@ -1,15 +1,13 @@
 /**
- * Created by luisf on 10/05/2017.
+ * Created by luisf on 11/05/2017.
  */
 
-export class Animal {
-    constructor(public name) { }
-    move(meters) {
-        console.log(this.name + " moved " + meters + "m.");
-    }
-}
+import Animal from 'core/animal';
 
-export class Snake extends Animal {
+export default class Snake extends Animal {
+    constructor(public name) {
+        super(name);
+    }
     move() {
 
         const dress = () => {
@@ -29,12 +27,5 @@ export class Snake extends Animal {
         dress();
         console.log("Slithering...");
         super.move(5);
-    }
-}
-
-export class Horse extends Animal {
-    move() {
-        console.log("Galloping...");
-        super.move(45);
     }
 }

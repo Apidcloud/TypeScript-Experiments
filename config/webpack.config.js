@@ -8,7 +8,7 @@ module.exports = {
     devtool: 'eval-source-map',
     // Library (or app) entry point (webpack will look for it in the 'src' directory due to the modules setting below).
     entry: [
-        'animals.ts'
+        'index.js'
     ],
     // Output the bundled JS to dist/app.js
     output: {
@@ -23,7 +23,7 @@ module.exports = {
         // Look for modules in .ts(x) files first, then .js(x)
         extensions: ['.ts', '.tsx', '.js', '.jsx'],
         // Add 'src' to our modulesDirectories, as all our app code will live in there, so Webpack should look in there for modules
-        modules: ['src', 'node_modules'],
+        modules: ['src', 'node_modules']
     },
     module: {
         loaders: [
@@ -36,6 +36,6 @@ module.exports = {
     },
     plugins: [
         // Set up the notifier plugin - you can remove this (or set alwaysNotify false) if desired
-        new WebpackNotifierPlugin({ alwaysNotify: true }),
+        new WebpackNotifierPlugin({ alwaysNotify: true })
     ]
 };
