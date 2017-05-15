@@ -9,6 +9,7 @@
     "test-notWorking": "cross-env TS_NODE_COMPILER_OPTIONS='{\\\"module\\\":\\\"commonjs\\\"}' mocha test/**/*animal_test.ts",
     "test": "set TS_NODE_COMPILER_OPTIONS={\"module\":\"commonjs\"} && mocha test/**/*_test.ts",
     "test-crossEnv": "cross-env-shell TS_NODE_COMPILER_OPTIONS='{\\\"module\\\":\\\"commonjs\\\"}' node test/core/cross-env_test.ts"
+
   },
   "devDependencies": {
     "@types/chai": "^3.5.2",
