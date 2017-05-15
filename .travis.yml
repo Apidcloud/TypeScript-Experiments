@@ -6,4 +6,4 @@ os:
   - linux
 
 script:
-  - npm test-unix
+  - npm run test-unix
