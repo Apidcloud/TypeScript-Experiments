@@ -6,7 +6,7 @@ os:
   - linux
 
 script:
-  - npm run test-unix
+  - npm run test
 
 branches:
   only:
