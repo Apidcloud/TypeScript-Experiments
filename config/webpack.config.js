@@ -11,25 +11,28 @@ let loadersSetup = ['babel-loader', 'ts-loader'];
 let outputPath = path.resolve('build/build-es5');
 
 // transpiling to ES6? (for editor and for some browsers)
-const toES6 = process.env.NODE_ENV === 'es6';
+const TO_ES6 = process.env.NODE_ENV === 'es6';
 
 // deploying? (for complete games)
-const deploying = process.env.NODE_ENV === 'production';
+const DEPLOYING = process.env.NODE_ENV === 'production';
 
-if (toES6) {
+if (TO_ES6) {
     // remove babel loader that would otherwise transpile to ES5
     loadersSetup.shift();
     outputPath = path.resolve('build/build-es6');
 
 }
 
-if (deploying) {
+if (DEPLOYING) {
     finalPackageName = packageName + '.min.js';
     outputPath = path.resolve('build/dist');
 }
 
 
 let config = {
+    // TODO: check if targeting electron with webpack is better in some way (i.e., target: electron)
+
+
     // Library (or app) entry point (webpack will look for it in the 'src' directory due to the modules setting below).
     entry: [
         'index.js'
