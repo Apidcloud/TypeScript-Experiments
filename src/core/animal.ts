@@ -9,4 +9,9 @@ export default class Animal {
     move(meters) {
         console.log(this.name + " teste " + meters + "m.");
     }
+
+    simpleReturn(str:string) {
+        console.log(str);
+        return str;
+    }
 }
