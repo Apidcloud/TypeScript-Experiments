@@ -6,8 +6,8 @@
     "deploy": "cross-env NODE_ENV=production webpack -p --config config/webpack.config.js",
     "live-server": "webpack-dev-server -d --port 8080 --progress --colors --hot --config config/webpack.config.js",
     "watch": "webpack -d --config config/webpack.config.js --watch",
-    "test-notWorking": "cross-env TS_NODE_COMPILER_OPTIONS='{\\\"module\\\":\\\"commonjs\\\"}' mocha test/**/*animal_test.ts",
-    "test": "set TS_NODE_COMPILER_OPTIONS={\"module\":\"commonjs\"} && mocha test/**/*_test.ts",
+    "test": "cross-env TS_NODE_COMPILER_OPTIONS='{\"module\":\"commonjs\"}' mocha test/**/*animal_test.ts",
+    "test-windows": "set TS_NODE_COMPILER_OPTIONS={\"module\":\"commonjs\"} && mocha test/**/*_test.ts",
     "test-crossEnv": "cross-env-shell TS_NODE_COMPILER_OPTIONS='{\\\"module\\\":\\\"commonjs\\\"}' node test/core/cross-env_test.ts"
 
   },
