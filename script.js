@@ -3,8 +3,8 @@
  */
 
 
-var sam = new SC.Snake("Sammy the Python");
-var tom = new SC.Horse("Tommy the Palomino");
+var sam = new TE.Snake("Sammy the Python");
+var tom = new TE.Horse("Tommy the Palomino");
 
 sam.move();
 tom.move(34);
