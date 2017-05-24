@@ -7,14 +7,12 @@
     "allowSyntheticDefaultImports": true,
     "noImplicitAny": false,
     "sourceMap": true,
-    "outDir": "ts-build",
-    "jsx": "preserve",
-    "typeRoots": [
-      "node_modules/@types"
-    ]
+    "outDir": "_ts-build",
+    "jsx": "preserve"
   },
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "__test__"
   ],
   "include": [ "**/*.ts" ]
 }
