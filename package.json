@@ -1,11 +1,14 @@
 {
   "name": "experimental-library",
+  "description": "Some experiments with TypeScript",
+  "version": "1.0.0",
+  "main": "build/dist/experimental-library.min.js",
   "scripts": {
     "build": "webpack -d --config config/webpack.config.js",
     "editor-build": "cross-env NODE_ENV=es6 npm run build",
     "deploy": "cross-env NODE_ENV=production webpack -p --config config/webpack.config.js",
     "live-server": "webpack-dev-server -d --port 8080 --progress --colors --hot --config config/webpack.config.js",
-    "watch": "webpack -d --config config/webpack.config.js --watch",
+    "watch": "npm run build -- -w",
     "test": "cross-env TS_NODE_COMPILER_OPTIONS={\\\"module\\\":\\\"commonjs\\\"} mocha test/**/*_test.ts"
   },
   "devDependencies": {
@@ -29,5 +32,23 @@
   },
   "dependencies": {
     "babel-runtime": "^6.23.0"
-  }
+  },
+  "files": [
+    "build",
+    "README.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Apidcloud/TypeScript-Experiments.git"
+  },
+  "keywords": [
+    "typescript",
+    "experiments"
+  ],
+  "author": "Apidcloud <luisapidcloud@hotmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Apidcloud/TypeScript-Experiments/issues"
+  },
+  "homepage": "https://github.com/Apidcloud/TypeScript-Experiments#readme"
 }
