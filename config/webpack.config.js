@@ -3,7 +3,7 @@ const path = require('path');
 const WebpackNotifierPlugin = require('webpack-notifier');
 const packageName = require('../package.json').name;
 
-let finalPackageName = packageName + '.js';
+let finalPackageName;
 
 // default loaders when transpiling to ES5 (for running on every browser)
 let loadersSetup = ['babel-loader', 'ts-loader'];
@@ -20,11 +20,16 @@ if (TO_ES6) {
     // remove babel loader that would otherwise transpile to ES5
     loadersSetup.shift();
     outputPath = path.resolve('build/build-es6');
+    finalPackageName = packageName + ".js";
 
+} else {
+    // ES5
+    finalPackageName = packageName + '.browser.js';
 }
 
 if (DEPLOYING) {
-    finalPackageName = packageName + '.min.js';
+    // also ES5, but minified
+    finalPackageName = packageName + '.browser.min.js';
     outputPath = path.resolve('build/dist');
 }
 
