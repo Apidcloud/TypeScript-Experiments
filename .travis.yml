@@ -8,10 +8,6 @@ cache:
 notifications:
   email: false
 
-os:
-  - osx
-  - linux
-
 script:
   - npm run test
 
