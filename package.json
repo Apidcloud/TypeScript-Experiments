@@ -1,7 +1,7 @@
 {
   "name": "experimental-library",
   "description": "Some experiments with TypeScript",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "build/dist/experimental-library.min.js",
   "scripts": {
     "build": "webpack -d --config config/webpack.config.js",
