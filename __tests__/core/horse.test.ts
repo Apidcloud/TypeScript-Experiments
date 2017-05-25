@@ -1,8 +1,8 @@
 /**
- * Created by luisf on 15/05/2017.
+ * Created by luisf on 25/05/2017.
  */
 
-import Animal from '../../src/core/animal';
+import Horse from '../../src/core/horse';
 
 test("Returns exactly the input", () => {
 
@@ -10,7 +10,8 @@ test("Returns exactly the input", () => {
     let input = "sample input";
     let expectedResult = "sample input";
 
-    animal = new Animal("donkey");
+    animal = new Horse("horseDonkey");
+    animal.move(3);
     const result = animal.simpleReturn(input);
     expect(result).toBe(expectedResult);
 
