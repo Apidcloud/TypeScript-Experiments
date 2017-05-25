@@ -8,8 +8,9 @@ export default class Horse extends Animal {
     constructor(public name) {
         super(name);
     }
-    move() {
+    async move(meters: number): Promise<number> {
         console.log("Galloping...");
-        super.move(45);
+
+        return Promise.resolve(super.move(45));
     }
 }

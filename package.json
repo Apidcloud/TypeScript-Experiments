@@ -9,7 +9,7 @@
     "deploy": "cross-env NODE_ENV=production webpack -p --config config/webpack.config.js",
     "live-server": "webpack-dev-server -d --port 8080 --progress --colors --hot --config config/webpack.config.js",
     "watch": "npm run build -- -w",
-    "test": "jest --coverage"
+    "test": "jest --coverage --no-cache"
   },
   "devDependencies": {
     "@types/jest": "19.2.3",
@@ -25,6 +25,7 @@
     "ts-jest": "20.0.4",
     "ts-loader": "^2.0.3",
     "typescript": "2.3.3",
+    "typescript-babel-jest": "1.0.3",
     "webpack": "^2.5.1",
     "webpack-dev-server": "^2.4.5",
     "webpack-notifier": "^1.5.0"
@@ -42,7 +43,11 @@
       "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
       ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },
-    "moduleDirectories": ["node_modules", "src"],
+    "mapCoverage": true,
+    "moduleDirectories": [
+      "node_modules",
+      "src"
+    ],
     "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
     "moduleFileExtensions": [
       "ts",

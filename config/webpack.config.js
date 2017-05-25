@@ -37,7 +37,7 @@ let config = {
     // TODO: check if targeting electron with webpack is better in some way (i.e., target: electron)
 
     // devtool is already set with -d (debug) and removed with -p (production) flags from webpack and webpack dev server
-    // devtool: source-map
+    // devtool: 'source-map'
 
     // Library (or app) entry point (webpack will look for it in the 'src' directory due to the modules setting below).
     entry: [

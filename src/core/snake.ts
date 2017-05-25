@@ -8,24 +8,28 @@ export default class Snake extends Animal {
     constructor(public name) {
         super(name);
     }
-    move() {
+
+    async move(): Promise<number> {
 
         const dress = () => {
             console.log("Dressing....");
         };
 
-        function sleep(ms = 0) {
-            return new Promise(r => setTimeout(r, ms));
-        }
-
         (async () => {
             console.log('before sleeping');
-            await sleep(1000);
-            console.log('after sleeping');
+            await asyncSleep(1000);
+            //console.log('after sleeping');
         })();
 
         dress();
         console.log("Slithering...");
-        super.move(5);
+
+        const moveResult = super.move(5);
+
+        return Promise.resolve(moveResult);
     }
+}
+
+function asyncSleep(ms: number) {
+    return new Promise(r => setTimeout(r, ms));
 }
