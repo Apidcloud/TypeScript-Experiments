@@ -11,7 +11,7 @@ test("Returns exactly the input", async () => {
 
     animal = new Horse("horseDonkey");
 
-    await animal.move(5);
+    await animal.move();
 
     const result = animal.simpleReturn(input);
     expect(result).toBe(input);

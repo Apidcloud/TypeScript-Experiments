@@ -9,7 +9,7 @@ export default class Snake extends Animal {
         super(name);
     }
 
-    async move(): Promise<number> {
+    async move(meters: number = 5): Promise<number> {
 
         const dress = () => {
             console.log("Dressing....");
@@ -24,9 +24,7 @@ export default class Snake extends Animal {
         dress();
         console.log("Slithering...");
 
-        const moveResult = super.move(5);
-
-        return Promise.resolve(moveResult);
+        return super.move(meters);
     }
 }
 

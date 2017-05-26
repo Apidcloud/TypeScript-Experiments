@@ -8,7 +8,7 @@ export default class Animal {
 
     async move(meters: number): Promise<number> {
         console.log(this.name + " moved " + meters + "m.");
-        return Promise.resolve(meters);
+        return meters;
     }
 
     simpleReturn(str:string) {
