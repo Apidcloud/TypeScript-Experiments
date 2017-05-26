@@ -4,14 +4,10 @@
     "target": "es6",
     "moduleResolution": "node",
     "baseUrl": "src",
-    "allowSyntheticDefaultImports": true,
+
     "noImplicitAny": false,
     "sourceMap": true,
-    "outDir": "ts-build",
-    "jsx": "preserve",
-    "typeRoots": [
-      "node_modules/@types"
-    ]
+    "outDir": "_ts-build"
   },
   "exclude": [
     "node_modules"
