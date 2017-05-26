@@ -10,10 +10,10 @@ Some project setup experiments with TypeScript
 
 [![MIT License][license-badge]][LICENSE]
 [![npm-version][npm-version-badge]][package]
-[![node-version][node-version-badge]][node]
 [![typescript][typescript-version-badge]][typescript]
+[![node-version][node-version-badge]][node]
 
-#Setup details
+## Setup details
 
 This package contemplates the use and combination of several packages, namely:
 - [typescript] as the language for both implementation and tests
