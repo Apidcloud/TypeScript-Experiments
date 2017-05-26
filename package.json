@@ -92,7 +92,10 @@
   },
   "keywords": [
     "typescript",
-    "experiments"
+    "experiments",
+    "webpack",
+    "babel",
+    "jest"
   ],
   "author": "Apidcloud <luisapidcloud@hotmail.com>",
   "license": "MIT",
