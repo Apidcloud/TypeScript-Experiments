@@ -6,6 +6,8 @@ import Horse from '../../src/core/horse';
 
 test("Returns exactly the input", async () => {
 
+    expect.assertions(1);
+
     let animal;
     let input = "sample input";
 

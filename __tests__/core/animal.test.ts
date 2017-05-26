@@ -11,7 +11,6 @@ test("Returns exactly the input", () => {
     let expectedResult = "sample input";
 
     animal = new Animal("donkey");
-    animal.move(3);
     const result = animal.simpleReturn(input);
     expect(result).toBe(expectedResult);
 
