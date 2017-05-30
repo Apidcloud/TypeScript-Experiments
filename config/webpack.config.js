@@ -5,9 +5,6 @@ const packageName = require('../package.json').name;
 
 let finalPackageName;
 
-// default loaders when transpiling to ES5 (for running on every browser)
-let loadersSetup = ['babel-loader', 'ts-loader'];
-
 let outputPath = path.resolve('build/build-es5');
 
 // transpiling to ES6? (for editor and for some browsers)
@@ -16,6 +13,22 @@ const TO_ES6 = process.env.NODE_ENV === 'es6';
 // deploying? (for complete games)
 const DEPLOYING = process.env.NODE_ENV === 'production';
 
+// default loaders when transpiling to ES5 (for running on every browser
+// .ts(x) files should first pass through the Typescript loader, and then through babel
+let loadersSetup = [
+    {
+        loader: 'babel-loader',
+        options: {
+            plugins: ['transform-runtime'],
+            presets: [['es2015', { modules: false }], 'stage-3'],
+        }
+    },
+    {
+        loader: 'ts-loader'
+    }
+];
+
+// if transpiling to ES6
 if (TO_ES6) {
     // remove babel loader that would otherwise transpile to ES5
     loadersSetup.shift();
@@ -23,7 +36,7 @@ if (TO_ES6) {
     finalPackageName = packageName + ".js";
 
 } else {
-    // ES5
+    // ES5 - default case
     finalPackageName = packageName + '.browser.js';
 }
 
@@ -37,11 +50,11 @@ let config = {
     // TODO: check if targeting electron with webpack is better in some way (i.e., target: electron)
 
     // devtool is already set with -d (debug) and removed with -p (production) flags from webpack and webpack dev server
-    // devtool: 'source-map'
+    // devtool: 'source-map',
 
     // Library (or app) entry point (webpack will look for it in the 'src' directory due to the modules setting below).
     entry: [
-        'index.js'
+        'index.ts'
     ],
     // Output the bundled JS to dist/app.js
     output: {
@@ -66,19 +79,8 @@ let config = {
                 test: /\.tsx?$/,
                 // Skip any files outside of `src` directory
                 include: /src/,
-                // .ts(x) files should first pass through the Typescript loader, and then through babel
-                use: [
-                    {
-                        loader: 'babel-loader',
-                        options: {
-                            presets: [['es2015', { modules: false }], 'stage-3'],
-                            plugins: ['transform-runtime']
-                        }
-                    },
-                    {
-                        loader: 'ts-loader'
-                    }
-                ]
+                // loaders depending on target (ES6 or ES5)
+                use: loadersSetup
             }
         ]
     },

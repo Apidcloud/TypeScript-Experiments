@@ -75,6 +75,7 @@
       "json"
     ],
     "collectCoverageFrom": [
+      "!src/**/index.ts",
       "src/**/*.ts"
     ],
     "coverageThreshold": {
