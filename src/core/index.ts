@@ -6,6 +6,6 @@ export { default as Animal } from './animal';
 
 export { default as Horse } from './horse';
 
-export { default as Snake } from './snake';
+export { default as Snake, TESTSYMBOL } from './snake';
 
 export { default as AnotherAnimal } from './anotherAnimal';
