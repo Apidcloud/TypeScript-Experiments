@@ -61,11 +61,24 @@ let config = {
         modules: ['src', 'node_modules']
     },
     module: {
-        loaders: [
-            // .ts(x) files should first pass through the Typescript loader, and then through babel
+        rules: [
             {
                 test: /\.tsx?$/,
-                loaders: loadersSetup
+                // Skip any files outside of `src` directory
+                include: /src/,
+                // .ts(x) files should first pass through the Typescript loader, and then through babel
+                use: [
+                    {
+                        loader: 'babel-loader',
+                        options: {
+                            presets: [['es2015', { modules: false }], 'stage-3'],
+                            plugins: ['transform-runtime']
+                        }
+                    },
+                    {
+                        loader: 'ts-loader'
+                    }
+                ]
             }
         ]
     },

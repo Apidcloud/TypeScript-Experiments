@@ -4,6 +4,8 @@
 
 export default class Animal {
     constructor(public name) {
+        let x = Symbol('xpto');
+        console.log(x);
     }
 
     async move(meters: number): Promise<number> {
