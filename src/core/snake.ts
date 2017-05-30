@@ -28,7 +28,8 @@ export default class Snake extends Animal {
     }
 }
 
-export let TESTSYMBOL = Symbol('##########xasewwrwerwe');
+
+export let TESTSYMBOL = Symbol('##########AnotherSymbol');
 
 function asyncSleep(ms: number) {
     return new Promise(r => setTimeout(r, ms));
