@@ -3,15 +3,24 @@ const path = require('path');
 const WebpackNotifierPlugin = require('webpack-notifier');
 const packageName = require('../package.json').name;
 
-let finalPackageName;
-
-let outputPath = path.resolve('build/build-es5');
-
 // transpiling to ES6? (for editor and for some browsers)
 const TO_ES6 = process.env.NODE_ENV === 'es6';
 
 // deploying? (for complete games)
 const DEPLOYING = process.env.NODE_ENV === 'production';
+
+// the variable name from which the library should be accessed from
+const globalLibraryName = 'TE';
+
+// the entry filename of the library (inside src)
+const entryFilename = 'index.ts'
+
+// default package name (ES5)
+let finalPackageName = packageName + '.browser.js';
+
+// default relative output path
+// it changes depending on the target (i.e., ES6, production or ES5 by default)
+let relativeOutputPath = 'build/build-es5';
 
 // default loaders when transpiling to ES5 (for running on every browser
 // .ts(x) files should first pass through the Typescript loader, and then through babel
@@ -32,21 +41,18 @@ let loadersSetup = [
 if (TO_ES6) {
     // remove babel loader that would otherwise transpile to ES5
     loadersSetup.shift();
-    outputPath = path.resolve('build/build-es6');
+    // update output path
+    relativeOutputPath = 'build/build-es6';
+    // update package name
     finalPackageName = packageName + ".js";
-
-} else {
-    // ES5 - default case
-    finalPackageName = packageName + '.browser.js';
-}
-
-if (DEPLOYING) {
-    // also ES5, but minified
+} else if (DEPLOYING) {
+    // update output path
+    relativeOutputPath = 'build/dist';
+    // update package name to an ES5 minified version
     finalPackageName = packageName + '.browser.min.js';
-    outputPath = path.resolve('build/dist');
 }
 
-let config = {
+const config = {
     // TODO: check if targeting electron with webpack is better in some way (i.e., target: electron)
 
     // devtool is already set with -d (debug) and removed with -p (production) flags from webpack and webpack dev server
@@ -54,18 +60,18 @@ let config = {
 
     // Library (or app) entry point (webpack will look for it in the 'src' directory due to the modules setting below).
     entry: [
-        'index.ts'
+        entryFilename
     ],
     // Output the bundled JS to dist/app.js
     output: {
         filename: finalPackageName,
-        path: outputPath,
+        path: path.resolve(relativeOutputPath),
         // export itself to a global var
         libraryTarget: "var",
         // name of the global var
-        library: "TE",
+        library: globalLibraryName,
         // webpack dev server hot reload path
-        publicPath: "/build/build-es5/"
+        publicPath: relativeOutputPath
     },
     resolve: {
         // Look for modules in .ts(x) files first, then .js(x)
