@@ -5,23 +5,19 @@ const packageName = require('../package.json').name;
 
 // transpiling to ES6? (for editor and for some browsers)
 const TO_ES6 = process.env.NODE_ENV === 'es6';
-
 // deploying? (for complete games)
 const DEPLOYING = process.env.NODE_ENV === 'production';
 
 // the variable name from which the library should be accessed from
 const globalLibraryName = 'TE';
-
 // the entry filename of the library (inside src)
 const entryFilename = 'index.ts'
 
 // default package name (ES5)
 let finalPackageName = packageName + '.browser.js';
-
 // default relative output path
 // it changes depending on the target (i.e., ES6, production or ES5 by default)
 let relativeOutputPath = 'build/build-es5';
-
 // default loaders when transpiling to ES5 (for running on every browser
 // .ts(x) files should first pass through the Typescript loader, and then through babel
 let loadersSetup = [
