@@ -15,11 +15,12 @@
     "test": "jest --coverage --no-cache",
     "watch:test": "cross-env CI=true jest --watch",
     "report-coverage": "codecov",
-    "semantic-release": "semantic-release pre && npm publish --tag=beta --access=public && semantic-release post",
+    "semantic-release": "semantic-release pre && npm publish --access=public && semantic-release post",
     "precommit": "npm test && npm run build",
     "commitmsg": "validate-commit-msg",
     "commit": "git-cz"
   },
+  "publishConfig": {"tag": "beta"},
   "devDependencies": {
     "@types/jest": "19.2.3",
     "babel-cli": "^6.24.1",
