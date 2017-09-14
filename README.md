@@ -1,5 +1,5 @@
 # TypeScript-Experiments
-Some project setup experiments with TypeScript
+Some project setup experiments with TypeScript.
 
 [![Build Status][build-badge]][build]
 [![Build status][win-build-badge]][win-build]
